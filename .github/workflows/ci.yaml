@@ -2,6 +2,8 @@ on:
   push:
   pull_request:
     types: [opened, synchronize]
+cache-mode: none
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,7 +13,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
-          bundler-cache: true
+          bundler-cache: false
       - name: build
         run: script/bootstrap
       - name: test
